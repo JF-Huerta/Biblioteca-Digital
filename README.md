@@ -2,9 +2,9 @@
 
 ## Sobre el proyecto
 
-Este proyecto consiste en una biblioteca digital desarrollada en Java, donde se pueden administrar libros y registrar sus préstamos y devoluciones.
+Biblioteca Digital UNTEC es una aplicación web desarrollada en Java para administrar libros y gestionar préstamos y devoluciones dentro de una biblioteca.
 
-La idea fue aplicar lo aprendido durante el módulo 5, trabajando con JSP, Servlets, bases de datos y el patrón MVC.
+El proyecto fue desarrollado utilizando una arquitectura MVC, separando la lógica de negocio, el acceso a datos y la interfaz de usuario.
 
 ## ¿Qué se puede hacer?
 
@@ -21,8 +21,6 @@ La aplicación permite:
 
 ## Tecnologías utilizadas
 
-Para desarrollar el proyecto utilicé:
-
 - Java EE
 - JSP y Servlets
 - JSTL
@@ -32,28 +30,63 @@ Para desarrollar el proyecto utilicé:
 - Eclipse
 - HTML y CSS
 
-## Organización del proyecto
+## Arquitectura del proyecto
 
 El proyecto está organizado utilizando el patrón MVC.
 
-Los Servlets se encargan de recibir y procesar las solicitudes, los JSP muestran la información en pantalla y las clases DAO se encargan de comunicarse con la base de datos.
+Los Servlets actúan como controladores y procesan las solicitudes del usuario.
 
-También se utiliza una sesión para mantener al usuario conectado después de iniciar sesión.
+Las páginas JSP se encargan de mostrar la información en pantalla.
+
+Las clases DAO gestionan la comunicación con la base de datos mediante JDBC.
+
+También se utilizan sesiones HTTP para mantener al usuario autenticado después de iniciar sesión.
+
+## Base de datos
+
+La aplicación utiliza MySQL para almacenar información de libros, usuarios y préstamos.
+
+El repositorio incluye el archivo:
+
+`biblioteca_digital.sql`
+
+Este archivo permite recrear la estructura de la base de datos necesaria para ejecutar el proyecto.
+
+## Configuración de credenciales
+
+Por seguridad, la contraseña de la base de datos no se almacena directamente en el código fuente.
+
+La aplicación obtiene la contraseña desde una variable de entorno:
+
+`BIBLIOTECA_DB_PASSWORD`
 
 ## Cómo ejecutar la aplicación
 
-1. Abrir el proyecto `BibliotecaDigital` en Eclipse.
-2. Tener MySQL funcionando y la base de datos configurada.
-3. Configurar Apache Tomcat 9.
-4. Ejecutar el proyecto en Tomcat.
-5. Abrir la aplicación desde el navegador.
-
-También se puede utilizar el archivo `BibliotecaDigital.war` para desplegar el proyecto directamente en Tomcat.
+1. Clonar o descargar el repositorio.
+2. Abrir el proyecto `BibliotecaDigital` en Eclipse.
+3. Importar el archivo `biblioteca_digital.sql` en MySQL.
+4. Configurar la variable de entorno `BIBLIOTECA_DB_PASSWORD`.
+5. Configurar Apache Tomcat 9.
+6. Ejecutar el proyecto en Tomcat.
+7. Abrir la aplicación desde el navegador.
 
 ## Uso
 
-Al entrar a la aplicación aparece el inicio de sesión.
+Al ingresar a la aplicación aparece la pantalla de inicio de sesión.
 
-Después de ingresar, se puede acceder al listado de libros, agregar nuevos libros, editar o eliminar los existentes.
+Después de iniciar sesión se puede acceder al listado de libros, agregar nuevos registros, editar o eliminar libros existentes.
 
-También se pueden registrar préstamos indicando el libro y el usuario. Los préstamos quedan registrados y posteriormente se puede marcar la devolución del libro.
+También se pueden registrar préstamos indicando el libro y el usuario. Los préstamos quedan registrados en la base de datos y posteriormente pueden marcarse como devueltos.
+
+## Aprendizajes del proyecto
+
+Durante el desarrollo de este proyecto trabajé principalmente en:
+
+- Implementación del patrón MVC en una aplicación web Java.
+- Uso de Servlets para manejar solicitudes HTTP.
+- Conexión con MySQL utilizando JDBC.
+- Implementación del patrón DAO para separar el acceso a datos.
+- Manejo de sesiones de usuario.
+- Uso de JSP y JSTL para generar vistas dinámicas.
+- Despliegue de aplicaciones web utilizando Apache Tomcat.
+- Separación de credenciales sensibles mediante variables de entorno.
